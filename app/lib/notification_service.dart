@@ -74,20 +74,13 @@ class NotificationService {
       enableVibration: true,
     );
 
-    iOSDetails = const IOSNotificationDetails(
-      presentAlert: true,
-      presentBadge: true,
-      presentSound: false,
-      badgeNumber: null,
-    );
+    const iOSDetails = IOSNotificationDetails();
 
     localNotificationsPlugin.show(
         notification.id,
         notification.title,
         notification.body,
-        NotificationDetails(
-          android: androidDetails,
-        ),
+        NotificationDetails(android: androidDetails, iOS: iOSDetails),
         payload: notification.payload);
   }
 
